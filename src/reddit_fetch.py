@@ -30,7 +30,7 @@ k = 1
 # Start data collection
 for subreddit in subreddits:
     for keyword in keywords:
-        for post in reddit.subreddit(subreddit).search(keyword, limit=500, sort="new"):
+        for post in reddit.subreddit(subreddit).search(keyword, limit=1000, sort="new"):
             full_text = f"{post.title} {post.selftext or ''}"
             text_no_space = re.sub(r"\s+", "", full_text).lower()
 
