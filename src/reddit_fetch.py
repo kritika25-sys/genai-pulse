@@ -20,7 +20,9 @@ normalized_keywords = {re.sub(r"\s+", "", kw).lower(): kw for kw in keywords}
 pattern = re.compile(r'(' + '|'.join(normalized_keywords.keys()) + r')', re.IGNORECASE)
 
 # Target subreddits
-subreddits = ["Technology", "MachineLearning", "Healthcare", "Education", "Finance", "Data"]
+subreddits = ["Technology", "MachineLearning", "Healthcare", "Education", "Finance", "Data","Retail",
+              "Media", "Entertainment", "Legal", "ArtificalIntelligence", "OpenAI", "DataScience", 
+              "Computers"]
 
 data = []
 k = 1
@@ -28,7 +30,7 @@ k = 1
 # Start data collection
 for subreddit in subreddits:
     for keyword in keywords:
-        for post in reddit.subreddit(subreddit).search(keyword, limit=100, sort="new"):
+        for post in reddit.subreddit(subreddit).search(keyword, limit=500, sort="new"):
             full_text = f"{post.title} {post.selftext or ''}"
             text_no_space = re.sub(r"\s+", "", full_text).lower()
 
